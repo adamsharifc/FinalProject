@@ -1,0 +1,53 @@
+private void openChildWindow(String windowName) {
+    JFrame childFrame = new JFrame(windowName);
+    childFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    childFrame.setSize(300, 150);
+
+    // Create panel for child window
+    JPanel childPanel = new JPanel();
+    childFrame.add(childPanel);
+
+    // Create input field in the child window
+    JTextField childInputField = new JTextField(15);
+    childPanel.add(childInputField);
+
+    // Create OK button in the child window
+    JButton okButton = new JButton("OK");
+    okButton.addActionListener(e -> {
+        // Get input from the child window and update the main window's text field
+        String userInput = childInputField.getText();
+        userInputField.setText(userInput);
+        System.out.println("User input: " + userInput);
+        childFrame.dispose(); // Close the child window
+    });
+    childPanel.add(okButton);
+
+    childFrame.setVisible(true);
+}
+
+
+        // showMovieTable();
+        
+        // Create the table
+        // mainPageTable = new JTable(model);
+        // JScrollPane scrollPane = new JScrollPane(mainPageTable);
+        // scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        // scrollPane.setPreferredSize(new Dimension(800, 400));
+        // mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // // Add double-click listener to the table
+        // mainPageTable.addMouseListener(new MouseAdapter() {
+        //     public void mouseClicked(MouseEvent e) {
+        //         if (e.getClickCount() == 2) { // Check for double click
+        //             int selectedRow = mainPageTable.getSelectedRow();
+        //             if (selectedRow != -1) { // Check if a row is selected
+        //                 Object[] rowData = data[selectedRow];
+                        
+
+        //                 // Open a new window with the row data
+        //                 MovieDetailsForm movieDetailsForm = new MovieDetailsForm(MainApplication.this, rowData);
+        //                 movieDetailsForm.setVisible(true);
+        //             }
+        //         }
+        //     }
+        // });

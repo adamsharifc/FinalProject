@@ -1,0 +1,52 @@
+Movie Library Manager:
+Scenario: As movie enthusiasts, we often find it challenging to keep track of our movie collections. We wish to create a Movie Library Manager that enhances our movie-watching experience.
+Project Details: 
+The application will offer GUIs to manage movie details, user ratings, genre filters, and a personalized watchlist. Users can save their movie library to files, allowing seamless sharing and exporting in various formats.
+
+- manage movie details
+- manage user ratings
+- manage genre filters
+- manage personalized watchlist
+- save movie library to files
+- share and export in various formats
+
+Usecases
+- Add a new movie
+- Delete a movie
+- Update a movie
+- View all movies
+- View movies by genre
+- View movies by rating
+- View movies by year
+- Add to watchlist
+- Remove from watchlist
+- View watchlist
+- Export movie library
+- Import movie library
+- Search movie library
+
+Variables
+- Movie Title
+- Movie Genre
+- Movie Rating
+- Movie Year
+- Movie Director
+- Movie Synopsis
+- Movie Watchlist
+- Movie Library
+
+- Screens
+- Main Menu
+- Add Movie
+- Delete Movie
+- Update Movie
+- View Movies
+- View Movies by Genre
+- View Movies by Rating
+- View Movies by Year
+- Add to Watchlist
+- Remove from Watchlist
+- View Watchlist
+- Export Movie Library
+- Import Movie Library
+- Search Movie Library
