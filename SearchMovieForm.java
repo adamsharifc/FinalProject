@@ -13,13 +13,6 @@ public class SearchMovieForm extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
-        JButton searchButton = new JButton("Search");
-        searchButton.addActionListener(e -> {
-            // String csv = searchMovie();
-            // mainApplication.handleSearchMovie(csv);
-        });
-        buttonPanel.add(searchButton);
-
         // Add button panel to main panel
         mainPanel.add(buttonPanel, BorderLayout.EAST);
 

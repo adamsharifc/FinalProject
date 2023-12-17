@@ -8,14 +8,14 @@ public class AddMovieForm extends JFrame {
     private JTextField ratingField;
     private JTextField yearField;
     private JTextField directorField;
-    private JTextField isWatchListField;
+    private JRadioButton watchListButton;
 
 
     public AddMovieForm(MainApplication mainApplication) {
         super("Add Movie");
         this.mainApplication = mainApplication;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 400);
+        setSize(500, 500);
 
         // Create panel for form fields
         JPanel formPanel = new JPanel(new GridBagLayout());
@@ -52,12 +52,21 @@ public class AddMovieForm extends JFrame {
         gbc.gridy++;
         directorField = new JTextField(10);
         formPanel.add(directorField, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1; // Reset gridwidth
+        watchListButton = new JRadioButton("Add to Watchlist");
+        formPanel.add(watchListButton, gbc);
 
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.gridwidth = 2; // Make the button span two columns
         JButton addButton = new JButton("Add Movie");
         formPanel.add(addButton, gbc);
+        addButton.addActionListener(e ->{
+            String csv = addMovie();
+            mainApplication.handleAddMovie(csv);
+        
+        });
 
         // Reset gridwidth for future components
         gbc.gridwidth = 1;
@@ -72,8 +81,7 @@ public class AddMovieForm extends JFrame {
         String rating = ratingField.getText();
         String year = yearField.getText();
         String director = directorField.getText();
-        String isWatchList = isWatchListField.getText();
-
+        String isWatchList = watchListButton.isSelected() ? "true" : "false";
     
         // Create a CSV string with the form data
         String csv = title + "," + genre + "," + rating + "," + year + "," + director + "," + isWatchList;
@@ -84,9 +92,10 @@ public class AddMovieForm extends JFrame {
         ratingField.setText("");
         yearField.setText("");
         directorField.setText("");
-        isWatchListField.setText("");
+        
 
         return csv;
+
     }
 
 }

@@ -14,6 +14,7 @@ public class MainApplication {
     private WatchListForm watchListForm;
     private ExportMovieForm exportMovieForm;
     private FilterByGenreForm filterByGenreForm;
+    private MovieTable movieTable;
 
     private JPanel mainPanel;
 
@@ -57,17 +58,17 @@ public class MainApplication {
         addButton("View Watchlist", (ActionEvent e) -> openChildWindow(watchListForm), mainPanel);
         addButton("Export Movies", (ActionEvent e) -> openChildWindow(exportMovieForm), mainPanel);
         addButton("Import Movies", (ActionEvent e) -> openChildWindow(null), mainPanel);  
-        
+
         // Search bar
         JTextField searchBar = new JTextField();
         searchBar.setPreferredSize(new Dimension(200, 24));
-        topPanel.add(searchBar, BorderLayout.NORTH);
+        mainPanel.add(searchBar, BorderLayout.NORTH);
         JButton searchButton = new JButton("Search");        
         searchButton.addActionListener(e -> {
             String query = searchBar.getText();
             openSearchWindow(query);
         });
-        topPanel.add(searchButton, BorderLayout.NORTH);
+        mainPanel.add(searchButton, BorderLayout.NORTH);
 
         // Get data for the table
         Object[][] data = movieLibrary.getMoviesTabled(movieLibrary.getAllMovies());
@@ -84,7 +85,8 @@ public class MainApplication {
     }
 
     public void showMovieTable(){
-        MovieTable movieTable = new MovieTable(this, movieLibrary.getMoviesTabled(movieLibrary.getAllMovies()));
+
+        movieTable = new MovieTable(this, movieLibrary.getMoviesTabled(movieLibrary.getAllMovies()));
         mainPanel.add(movieTable.getTablePanel(), BorderLayout.CENTER);
         mainFrame.revalidate();
         mainFrame.repaint();
@@ -92,8 +94,8 @@ public class MainApplication {
 
     public void handleAddMovie(String csv){
         movieLibrary.addMovie(csv, true);
-        refreshTable();
         addMovieForm.dispose();
+        refreshTable();
     }
     public void handleExportMovie(String filename, String format){
         movieLibrary.exportMovieLibrary(filename, format);
@@ -107,9 +109,6 @@ public class MainApplication {
         movieLibrary.updateMovie(id, title, genre, rating, year, director);
         refreshTable();
     }
-
-
-
     public Object[][] getFilteredMovies(String genre){
         return movieLibrary.getMoviesTabled(movieLibrary.searchMoviesExact(genre, "genre"));
     }
@@ -146,10 +145,10 @@ public class MainApplication {
     }
     private void refreshTable() {
         // Get the new data
-        Object[][] data = movieLibrary.getMoviesTabled(movieLibrary.getAllMovies());
-    
-        // Update the table model
-        DefaultTableModel model = (DefaultTableModel) mainPageTable.getModel();
-        model.setDataVector(data, columnNames);
+        mainPanel.remove(movieTable.getTablePanel());
+        movieTable = new MovieTable(this, movieLibrary.getMoviesTabled(movieLibrary.getAllMovies()));
+        mainPanel.add(movieTable.getTablePanel(), BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 }
