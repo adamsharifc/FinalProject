@@ -110,6 +110,22 @@ public class MovieLibrary {
             System.out.println("No movie found with that ID.");
         }
     }
+    
+    public static void updateMovieWatchlist(String id, boolean watchlist){
+        boolean none_found = true;
+        for (Movie movie : movies){
+            if (movie.getID().equals(id)){
+                if (movie != null){
+                    none_found = false;
+                    movie.setIsWatchList(watchlist);
+                    dumpMovies();
+                }
+            }
+        }
+        if (none_found){
+            System.out.println("No movie found with that ID.");
+        }
+    }
     public static ArrayList<Movie> searchMovies(String query, String field){
         boolean none_found = true;
         ArrayList<Movie> results = new ArrayList<Movie>();

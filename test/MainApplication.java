@@ -109,6 +109,11 @@ public class MainApplication {
     }
     public void handleUpdateMovie(String id, String title, String genre, String rating, String year, String director){
         movieLibrary.updateMovie(id, title, genre, rating, year, director);
+        refreshMovieTable();
+    }
+    public void handleUpdateMovieWatchlist(String id, boolean watchlist){
+        movieLibrary.updateMovieWatchlist(id, watchlist);
+        refreshMovieTable();
     }
 
     public Object[][] getFilteredMovies(String genre){

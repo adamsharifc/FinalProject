@@ -109,6 +109,10 @@ public class MainApplication {
         movieLibrary.updateMovie(id, title, genre, rating, year, director);
         refreshTable();
     }
+    public void handleUpdateMovieWatchlist(String id, boolean watchlist){
+        movieLibrary.updateMovieWatchlist(id, watchlist);
+        refreshTable();
+    }
     public Object[][] getFilteredMovies(String genre){
         return movieLibrary.getMoviesTabled(movieLibrary.searchMoviesExact(genre, "genre"));
     }

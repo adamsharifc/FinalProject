@@ -54,27 +54,30 @@ public class MovieDetailsForm extends JFrame {
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.gridwidth = 2; // Make the buttons span two columns
-        // JButton saveButton = new JButton("Save");
-        // saveButton.addActionListener(e -> {
+        JButton saveButton = new JButton("Save");
+        formPanel.add(saveButton, gbc);
+        saveButton.addActionListener(e -> {
 
-        //     // Update the movie properties
-        //     // System.out.println("Save button clicked");
-        //     // mainApplication.handleUpdateMovie(
-        //     //     id, 
-        //     //     titleField.getText(),
-        //     //     genreField.getText(), 
-        //     //     ratingField.getText(), 
-        //     //     yearField.getText(), 
-        //     //     directorField.getText()
-        //     // );
-        // });
-        // formPanel.add(saveButton, gbc);
-
+            // Update the movie properties
+            System.out.println("Save button clicked");
+            mainApplication.handleUpdateMovie(
+                id, 
+                titleField.getText(),
+                genreField.getText(), 
+                ratingField.getText(), 
+                yearField.getText(), 
+                directorField.getText()
+            );
+            handleExit(saveButton);
+            
+        });
         gbc.gridy++;
         JButton deleteButton = new JButton("Delete Movie");
         deleteButton.addActionListener(e -> {
             // Delete the movie
-            // mainApplication.handleDeleteMovie(movie.getID());
+            mainApplication.handleDeleteMovie(id);
+            handleExit(deleteButton);
+            
         });
         formPanel.add(deleteButton, gbc);
         
@@ -87,7 +90,8 @@ public class MovieDetailsForm extends JFrame {
 
             toggleWatchlistButton.setText(watchlistStatus[0] ? "Remove from Watchlist" : "Add to Watchlist");
             watchlistStatus[0] = !watchlistStatus[0];
-            // mainApplication.handleSaveMovie(data[6].toString());
+            mainApplication.handleUpdateMovieWatchlist(id, watchlistStatus[0]);
+            handleExit(toggleWatchlistButton);
         });
         formPanel.add(toggleWatchlistButton, gbc);
 
@@ -95,5 +99,11 @@ public class MovieDetailsForm extends JFrame {
         gbc.gridwidth = 1;
 
         add(formPanel);
+    }
+    public void handleExit(JButton button){
+        Window parentWindow = SwingUtilities.getWindowAncestor(button);
+        if (parentWindow != null) {
+            parentWindow.dispose();
+        }
     }
 }

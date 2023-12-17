@@ -1,9 +1,9 @@
-8
+10
 0,The Shawashank Redemption,Drama,9.3,1994,Frank Darabont,true
-1,The Godfather,Crime,9.2,1975,Francis Ford Coppolla,true
-2,The Godfather Part II,Crime,9.2,1979,Francis Ford Coppolla,true
-3,Pulp Fiction,Comedy,8.0,1993,Quentin Tarantino,false
+1,The Godfather Part I,Crime,9.2,1975,Francis Ford Coppolla,true
+2,The Godfather Part III,Crime,9.2,1979,Francis Ford Coppolla,true
+3,Pulp Fiction,Comedy,8.0,1993,Quentin Tarantino,true
 4,The Dark Knight,Drama,9.1,2023,Chris Nolan,true
 5,Inception,Sci-Fi,8.6,2010,Chris Nolan,true
 6,Interstellar,Drama,8.6,2014,Chirs Nolan,true
-7,Batman Begins,Superhero,8.2,2008,Chris Nolan,true
+7,Batman Begins,Superhero,8.2,2008,Chris Nolan,false
