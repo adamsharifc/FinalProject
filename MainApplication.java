@@ -57,7 +57,6 @@ public class MainApplication {
         addButton("Filter by Genre", (ActionEvent e) -> openChildWindow(filterByGenreForm), mainPanel);
         addButton("View Watchlist", (ActionEvent e) -> openChildWindow(watchListForm), mainPanel);
         addButton("Export Movies", (ActionEvent e) -> openChildWindow(exportMovieForm), mainPanel);
-        addButton("Import Movies", (ActionEvent e) -> openChildWindow(null), mainPanel);  
 
         // Search bar
         JTextField searchBar = new JTextField();
